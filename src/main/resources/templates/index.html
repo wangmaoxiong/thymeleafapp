@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <title>蚩尤后裔</title>
     <meta charset="UTF-8">
@@ -50,11 +50,11 @@
     <nav class="main-menu hidden-xs hidden-sm">
         <ul class="menu-left pull-left">
             <li class="menu-has-children">
-                <a href="index.html">Home</a>
+                <a href="index.html" th:href="@{/}">Home</a>
                 <ul>
-                    <li><a href="index.html">Home 1</a></li>
-                    <li><a href="index2.html">Home 2</a></li>
-                    <li><a href="index3.html">Home 3</a></li>
+                    <li><a href="index.html" th:href="@{/}">Home 1</a></li>
+                    <li><a href="index2.html" th:href="@{/}">Home 2</a></li>
+                    <li><a href="index3.html" th:href="@{/}">Home 3</a></li>
                     <li class="child-has-children">
                         <a href="#">Home 4</a>
                         <ul>
@@ -85,7 +85,7 @@
             <a href="index.html"><img src="images/home1/logo.png" alt="Logo"></a>
         </div>
         <ul class="menu-right pull-left">
-            <li><a href="photo.html">Photos</a></li>
+            <li><a href="photo.html" th:href="@{/photo/list}">Photos</a></li>
             <li><a href="volunteer.html">Volunteer</a></li>
             <li class="menu-has-children">
                 <a href="shop.html">Shop</a>

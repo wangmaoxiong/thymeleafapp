@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" >
     <head>
         <title>Politist</title>
         <meta charset="UTF-8">
@@ -8,21 +8,21 @@
         <meta name="author" content="Themeum">
 
         <!-- Include All Stylesheet -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/preset.css">
-        <link rel="stylesheet" href="css/owl.carousel.css">
-        <link rel="stylesheet" href="css/owl.theme.css">
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
-        <link id="color-preset" rel="stylesheet" type="text/css" href="css/presets/preset1.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" >
+        <link rel="stylesheet" href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" >
+        <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}" >
+        <link rel="stylesheet" href="../static/css/preset.css" th:href="@{/css/preset.css}" >
+        <link rel="stylesheet" href="../static/css/owl.carousel.css" th:href="@{/css/owl.carousel.css}" >
+        <link rel="stylesheet" href="../static/css/owl.theme.css" th:href="@{/css/owl.theme.css}" >
+        <link rel="stylesheet" href="../static/css/magnific-popup.css" th:href="@{/css/magnific-popup.css}" >
+        <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" >
+        <link rel="stylesheet" href="../static/css/responsive.css" th:href="@{/css/responsive.css}" >
+        <link id="color-preset" rel="stylesheet" type="text/css" href="../static/css/presets/preset1.css" th:href="@{/css/presets/preset1.css}" >
         <!-- Favicon Icon -->
         <link rel="icon"  type="image/png" href="images/favicon.png">
         <!-- Favicon Icon -->
         <!--[if lt IE 9]>
-            <script src="js/html5shive.js"></script>
+        <script src="../static/js/html5shive.js}"></script>
         <![endif]-->
 
     </head>
@@ -31,10 +31,10 @@
         <div class="color-switcher">
             <a class="toggle-switch" href="#"><i class="fa fa-cog"></i></a>
             <div class="style-choose">
-                <a href="#"  data-color="preset1"><img alt="Preset" src="images/colorpreset/preset1/preset1.png"></a>
-                <a href="#"  data-color="preset2"><img alt="Preset" src="images/colorpreset/preset2/preset2.png"></a>
-                <a href="#"  data-color="preset3"><img alt="Preset" src="images/colorpreset/preset3/preset3.png"></a>
-                <a href="#"  data-color="preset4"><img alt="Preset" src="images/colorpreset/preset4/preset4.png"></a>
+                <a href="#"  data-color="preset1"><img alt="Preset" th:src="@{/images/colorpreset/preset1/preset1.png}"></a>
+                <a href="#"  data-color="preset2"><img alt="Preset" th:src="@{/images/colorpreset/preset2/preset2.png}"></a>
+                <a href="#"  data-color="preset3"><img alt="Preset" th:src="@{/images/colorpreset/preset3/preset3.png}"></a>
+                <a href="#"  data-color="preset4"><img alt="Preset" th:src="@{/images/colorpreset/preset4/preset4.png}"></a>
             </div>
         </div>
         <!-- Colorpreset Area End -->
@@ -49,7 +49,7 @@
             <nav class="main-menu hidden-xs hidden-sm">
                 <ul class="menu-left pull-left">
                     <li class="menu-has-children">
-                        <a href="index.html">Home</a>
+                        <a href="index.html" th:href="@{/}">Home</a>
                         <ul>
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="index2.html">Home 2</a></li>
@@ -71,32 +71,32 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="../static/biography.html">Biography</a></li>
                     <li class="menu-has-children">
                         <a href="news.html">News</a>
                         <ul>
-                            <li><a href="newsDetails.html">News Details</a></li>
+                            <li><a href="../static/newsDetails.html">News Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="event.html">Event</a></li>
+                    <li><a href="../static/event.html">Event</a></li>
                 </ul>
                 <div class="pull-left logo-area">
-                    <a href="index.html"><img src="images/home1/logo.png" alt="Logo"></a>
+                    <a href="index.html"><img th:src="@{/images/home1/logo.png}" alt="Logo"></a>
                 </div>
                 <ul class="menu-right pull-left">
-                    <li><a href="photo.html">Photos</a></li>
-                    <li><a href="volunteer.html">Volunteer</a></li>
+                    <li><a href="photo.html" th:href="@{/photo/list}">Photos</a></li>
+                    <li><a href="../static/volunteer.html">Volunteer</a></li>
                     <li class="menu-has-children">
                         <a href="shop.html">Shop</a>
                         <ul>
-                            <li><a href="shopDetails.html">Shop Details</a></li>
+                            <li><a href="../static/shopDetails.html">Shop Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Donate</a></li> 
+                    <li><a href="#">Donate</a></li>
                 </ul>
             </nav>
             <ul class="pull-right search-cart">
-                <li><a href="#"><i class="fa fa-search"></i></a></li> 
+                <li><a href="#"><i class="fa fa-search"></i></a></li>
                 <li class="user-profile-menu">
                     <a href="profile.html"><i class="fa fa-user"></i></a>
                     <ul>
@@ -105,7 +105,7 @@
                         <li><a href="#">Sign Out</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li> 
+                <li><a href="#"><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li>
                 <li class="lang-select">
                     <a href="#">en<i class="fa fa-angle-down"></i></a>
                     <div id="language">
@@ -113,13 +113,13 @@
                         <a href="#">Fr</a>
                         <a href="#">Br</a>
                     </div>
-                </li> 
+                </li>
             </ul>
             <div class="clearfix"></div>
         </header>
         <div class="hidden-lg hidden-md" id="toggle-menu">
             <div class="pull-left logo-area">
-                <a href="index.html"><img src="images/home1/logo.png" alt="Logo"></a>
+                <a href="index.html"><img th:src="@{/images/home1/logo.png}" alt="Logo"></a>
             </div>
             <div class="mobile-menu-toggle pull-right">
                 <a href="#"><i class="fa fa-bars"></i></a>
@@ -135,23 +135,23 @@
                             <li><a href="index3.html">Home 3</a></li>
                         </ul>
                     </li>
-                    <li><a href="biography.html">Biography</a></li>
+                    <li><a href="../static/biography.html">Biography</a></li>
                     <li class="mobile-menu-has-children">
                         <a href="news.html">News</a>
                         <ul>
-                            <li><a href="newsDetails.html">News Details</a></li>
+                            <li><a href="../static/newsDetails.html">News Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="event.html">Event</a></li>
+                    <li><a href="../static/event.html">Event</a></li>
                     <li><a href="photo.html">Photos</a></li>
-                    <li><a href="volunteer.html">Volunteer</a></li>
+                    <li><a href="../static/volunteer.html">Volunteer</a></li>
                     <li class="mobile-menu-has-children">
                         <a href="shop.html">Shop</a>
                         <ul>
-                            <li><a href="shopDetails.html">Shop Details</a></li>
+                            <li><a href="../static/shopDetails.html">Shop Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Donate</a></li> 
+                    <li><a href="#">Donate</a></li>
                 </ul>
             </nav>
         </div>
@@ -189,50 +189,50 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo1.jpg"></a>
-                            <img src="images/photo/photo1.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo1.jpg}"></a>
+                            <img th:src="@{/images/photo/photo1.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo2.jpg"></a>
-                            <img src="images/photo/photo2.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo2.jpg}"></a>
+                            <img th:src="@{/images/photo/photo2.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo3.jpg"></a>
-                            <img src="images/photo/photo3.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo3.jpg}"></a>
+                            <img th:src="@{/images/photo/photo3.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo4.jpg"></a>
-                            <img src="images/photo/photo4.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo4.jpg}"></a>
+                            <img th:src="@{/images/photo/photo4.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo5.jpg"></a>
-                            <img src="images/photo/photo5.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo5.jpg}"></a>
+                            <img th:src="@{/images/photo/photo5.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo6.jpg"></a>
-                            <img src="images/photo/photo6.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo6.jpg}"></a>
+                            <img th:src="@{/images/photo/photo6.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo7.jpg"></a>
-                            <img src="images/photo/photo7.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo7.jpg}"></a>
+                            <img th:src="@{/images/photo/photo7.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo8.jpg"></a>
-                            <img src="images/photo/photo8.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo8.jpg}"></a>
+                            <img th:src="@{/images/photo/photo8.jpg}" alt="">
                         </div>
                     </div>
                 </div>
@@ -247,50 +247,50 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo1.jpg"></a>
-                            <img src="images/photo/photo1.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo1.jpg}"></a>
+                            <img th:src="@{/images/photo/photo1.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo2.jpg"></a>
-                            <img src="images/photo/photo2.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo2.jpg}"></a>
+                            <img th:src="@{/images/photo/photo2.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo3.jpg"></a>
-                            <img src="images/photo/photo3.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo3.jpg}"></a>
+                            <img th:src="@{/images/photo/photo3.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo4.jpg"></a>
-                            <img src="images/photo/photo4.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo4.jpg}"></a>
+                            <img th:src="@{/images/photo/photo4.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo5.jpg"></a>
-                            <img src="images/photo/photo5.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo5.jpg}"></a>
+                            <img th:src="@{/images/photo/photo5.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo6.jpg"></a>
-                            <img src="images/photo/photo6.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo6.jpg}"></a>
+                            <img th:src="@{/images/photo/photo6.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo7.jpg"></a>
-                            <img src="images/photo/photo7.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo7.jpg}"></a>
+                            <img th:src="@{/images/photo/photo7.jpg}" alt="">
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-6">
                         <div class="photos">
-                            <a class="plus-icon" href="images/photo/photo8.jpg"></a>
-                            <img src="images/photo/photo8.jpg" alt="">
+                            <a class="plus-icon" th:href="@{/images/photo/photo8.jpg}"></a>
+                            <img th:src="@{/images/photo/photo8.jpg}" alt="">
                         </div>
                     </div>
                 </div>
@@ -347,7 +347,7 @@
                 <div class="row">
                     <div class="col-md-12 col-xs-12 text-center">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="images/home2/footerLogo.png" alt=""></a>
+                            <a href="index.html"><img th:src="@{/images/home2/footerLogo.png}" alt=""></a>
                         </div>
                         <ul class="social-icon text-center">
                             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
@@ -387,13 +387,13 @@
         </footer>
         <!-- Footer Area End -->
         <!-- Include All JavaScript -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.appear.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/jquery.countdown.min.js"></script>
-        <script src="js/main.js"></script>
+        <script th:src="@{/js/jquery.min.js}"></script>
+        <script th:src="@{/js/jquery.appear.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/owl.carousel.min.js}"></script>
+        <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+        <script th:src="@{/js/jquery.countdown.min.js}"></script>
+        <script th:src="@{/js/main.js}"></script>
     </body>
 </html>
 
