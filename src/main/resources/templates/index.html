@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>银河数据中心</title>
+    <!--从类路径下引入的 webJars 中指定 jquery -->
+    <script type="text/javascript" src="webjars/jquery/3.5.0/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            for (var i = 0; i < 3; i++) {
+                $("h3").fadeOut(500).fadeIn(500);
+            }
+        });
+    </script>
 </head>
 <body>
 <h3>银河数据中心</h3>
