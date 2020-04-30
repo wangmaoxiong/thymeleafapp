@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PhotoController {
 
+    /**
+     * http://localhost:8080/photo/list
+     * @return
+     */
     @GetMapping("photo/list")
     public String toPhoto() {
         return "photo";
