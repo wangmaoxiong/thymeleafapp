@@ -6,11 +6,13 @@
 </head>
 <body>
 
-<!-- Header Area Start 公共的头部-->
+<!-- Header Area Start 公共的头部，接收参数名称 activeUrl，可以定义多个参数.-->
 <header class="header-area" th:fragment="commonsHead(activeUrl)">
     <ul class="social-icon pull-left">
-        <li title="http put 请求" th:id="${activeUrl=='httpPut'}?'item-active'">
-            <a href="#" th:href="@{/example/httpPut}"><i class="fa fa-facebook"></i></a></li>
+        <li title="http put 请求">
+            <!--使用三元运算符进行判断，满足条件时进行高亮显示-->
+            <a th:href="@{/example/httpPut}" th:id="${activeUrl=='httpPut'}?'item-active'"><i
+                    class="fa fa-facebook"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -18,6 +20,7 @@
     <nav class="main-menu hidden-xs hidden-sm">
         <ul class="menu-left pull-left">
             <li class="menu-has-children">
+                <!--使用三元运算符进行判断，满足条件时进行高亮显示-->
                 <a th:href="@{/}" th:id="${activeUrl=='home'}?'item-active'">Home</a>
                 <ul>
                     <li><a href="index.html" th:href="@{/}">Home 1</a></li>
@@ -53,7 +56,9 @@
             <a href="index.html" th:href="@{/}"><img th:src="@{/images/home1/logo.png}" alt="Logo"></a>
         </div>
         <ul class="menu-right pull-left">
-            <li><a href="photo.html" th:href="@{/photo/list}" th:id="${activeUrl=='photos'}?'item-active'">Photos</a>
+            <li>
+                <!--使用三元运算符进行判断，满足条件时进行高亮显示-->
+                <a href="photo.html" th:href="@{/photo/list}" th:id="${activeUrl=='photos'}?'item-active'">Photos</a>
             </li>
             <li><a href="volunteer.html">Volunteer</a></li>
             <li class="menu-has-children">
