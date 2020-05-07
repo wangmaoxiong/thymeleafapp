@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Http Put 方式请求</title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+    <style type="text/css">
+        input, select {
+            border-radius: 2px;
+            width: 180px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div style="width: 500px;height:400px;border: #1b6d85 1px solid;margin: auto;padding: 20px">
+    <form action="" method="post" th:action="@{/example/httpPut}">
+        <!--form的method只有get与post两种，使用put方式时：-->
+        <!--创建一个input隐藏项，name强制为 "_method"，value值就指定此form请求的方式-->
+        <!--th:if 表达式：条件满足时生成标签，否则不生成标签-->
+        <input type="hidden" name="_method" value="put" th:if="${user!=null}">
+        <!--主键id做成隐藏项，修改时根据id进行修改-->
+        <input type="hidden" name="id" th:if="${user!=null}" th:value="${user.id}">
+        <!--三元运算符，当user不等于null时，取User的属性值，否则为空-->
+        姓名：<input type="text" name="name" th:value="${user!=null}?${user.name}"><br><br>
+        薪水：<input type="text" name="salary" th:value="${user!=null}?${user.salary}"><br><br>
+        学历：
+        <select name="education">
+            <!--th:each 表达式用于遍历集合，如果当前学历项等于用户的学历，则让它默认选中-->
+            <option th:each="education:${educationArr}"
+                    th:text="${education}"
+                    th:value="${education}"
+                    th:selected="${user.education!=null}?${user.education==education}"></option>
+        </select><br><br>
+        <!--#dates.format 是 thymeleaf 格式化日期的方式-->
+        生日：<input type="text" name="birthday"
+                  th:value="${user.birthday!=null}?${#dates.format(user.birthday, 'yyyy-MM-dd HH:mm:ss')}"><br><br>
+        <button type="submit" class="btn btn-primary">修改</button>
+        <br><br>
+    </form>
+</div>
+
+</body>
+</html>
