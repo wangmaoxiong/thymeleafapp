@@ -70,4 +70,10 @@ public class SystemController {
         return objectNode.toString();
     }
 
+    @ResponseBody
+    @GetMapping("system/test")
+    public String test() {
+        System.out.println(1 / 0);
+        return "xx";
+    }
 }
