@@ -26,7 +26,7 @@
 </head>
 <body>
 <!-- Header Area Start 公共的头部-->
-<!--th:replace 表达式：用目标模板内容来替换自己.-->
+<!--th:replace 表达式：用目标模板内容来替换自己，引用的同时传递参数-->
 <div th:replace="commonsTemplate::commonsHead(httpPut)"></div>
 
 <div style="width: 500px;height:580px;border: #1b6d85 1px solid;border-radius:3px;margin: auto;padding: 20px">
