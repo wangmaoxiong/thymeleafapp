@@ -27,7 +27,7 @@
 <body>
 <!-- Header Area Start 公共的头部-->
 <!--th:replace 表达式：用目标模板内容来替换自己.-->
-<div th:replace="commonsTemplate::commonsHead"></div>
+<div th:replace="commonsTemplate::commonsHead(httpPut)"></div>
 
 <div style="width: 500px;height:580px;border: #1b6d85 1px solid;border-radius:3px;margin: auto;padding: 20px">
     <form action="" method="post" th:action="@{/example/httpPut}">

@@ -7,9 +7,10 @@
 <body>
 
 <!-- Header Area Start 公共的头部-->
-<header class="header-area" th:fragment="commonsHead">
+<header class="header-area" th:fragment="commonsHead(activeUrl)">
     <ul class="social-icon pull-left">
-        <li title="http put 请求"><a href="#" th:href="@{/example/httpPut}"><i class="fa fa-facebook"></i></a></li>
+        <li title="http put 请求" th:id="${activeUrl=='httpPut'}?'item-active'">
+            <a href="#" th:href="@{/example/httpPut}"><i class="fa fa-facebook"></i></a></li>
         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
         <li><a href="#"><i class="fa fa-instagram"></i></a></li>
@@ -17,7 +18,7 @@
     <nav class="main-menu hidden-xs hidden-sm">
         <ul class="menu-left pull-left">
             <li class="menu-has-children">
-                <a href="index.html" th:href="@{/}">Home</a>
+                <a th:href="@{/}" th:id="${activeUrl=='home'}?'item-active'">Home</a>
                 <ul>
                     <li><a href="index.html" th:href="@{/}">Home 1</a></li>
                     <li><a href="index2.html" th:href="@{/}">Home 2</a></li>
@@ -39,7 +40,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="biography.html">Biography</a></li>
+            <li><a href="biography.html" class="active">Biography</a></li>
             <li class="menu-has-children">
                 <a href="news.html">News</a>
                 <ul>
@@ -52,7 +53,8 @@
             <a href="index.html" th:href="@{/}"><img th:src="@{/images/home1/logo.png}" alt="Logo"></a>
         </div>
         <ul class="menu-right pull-left">
-            <li><a href="photo.html" th:href="@{/photo/list}">Photos</a></li>
+            <li><a href="photo.html" th:href="@{/photo/list}" th:id="${activeUrl=='photos'}?'item-active'">Photos</a>
+            </li>
             <li><a href="volunteer.html">Volunteer</a></li>
             <li class="menu-has-children">
                 <a href="shop.html">Shop</a>
