@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- Header Area Start 公共的头部-->
+<header class="header-area" th:fragment="commonsHead">
+    <ul class="social-icon pull-left">
+        <li title="http put 请求"><a href="#" th:href="@{/example/httpPut}"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+    <nav class="main-menu hidden-xs hidden-sm">
+        <ul class="menu-left pull-left">
+            <li class="menu-has-children">
+                <a href="index.html" th:href="@{/}">Home</a>
+                <ul>
+                    <li><a href="index.html" th:href="@{/}">Home 1</a></li>
+                    <li><a href="index2.html" th:href="@{/}">Home 2</a></li>
+                    <li><a href="index3.html" th:href="@{/}">Home 3</a></li>
+                    <li class="child-has-children">
+                        <a href="#">Home 4</a>
+                        <ul>
+                            <li><a href="#">Sample Home 1</a></li>
+                            <li><a href="#">Sample Home 2</a></li>
+                            <li class="child-has-children">
+                                <a href="#">Sample Home 3</a>
+                                <ul>
+                                    <li><a href="#">Extra Homepage 1</a></li>
+                                    <li><a href="#">Extra Homepage 2</a></li>
+                                    <li><a href="#">Extra Homepage 3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="biography.html">Biography</a></li>
+            <li class="menu-has-children">
+                <a href="news.html">News</a>
+                <ul>
+                    <li><a href="newsDetails.html">News Details</a></li>
+                </ul>
+            </li>
+            <li><a href="event.html">Event</a></li>
+        </ul>
+        <div class="pull-left logo-area">
+            <a href="index.html" th:href="@{/}"><img th:src="@{/images/home1/logo.png}" alt="Logo"></a>
+        </div>
+        <ul class="menu-right pull-left">
+            <li><a href="photo.html" th:href="@{/photo/list}">Photos</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li class="menu-has-children">
+                <a href="shop.html">Shop</a>
+                <ul>
+                    <li><a href="shopDetails.html">Shop Details</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Donate</a></li>
+        </ul>
+    </nav>
+    <ul class="pull-right search-cart">
+        <li><a href="#" id="search-toggle"><i class="fa fa-search"></i></a></li>
+        <li class="user-profile-menu">
+            <a href="profile.html"><i class="fa fa-user"></i></a>
+            <ul>
+                <li><a href="#">My Campaign</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-shopping-basket"></i><span>(2)</span></a></li>
+        <li class="lang-select">
+            <a href="#">en<i class="fa fa-angle-down"></i></a>
+            <div id="language">
+                <a href="#">En</a>
+                <a href="#">Fr</a>
+                <a href="#">Br</a>
+            </div>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+    <!-- Search Area -->
+    <section class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <form action="#" method="post" class="search-form">
+                        <input type="search" name="search" placeholder="Search...">
+                        <a href="#" id="search-close"><i class="fa fa-times"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+<!-- Header Area end 公共的头部-->
+
+<!-- Footer Area Start 公共的底部-->
+<footer class="footer-area" th:fragment="commonsFooter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1 col-xs-12 text-center">
+                <p class="copy-right">&copy; 2016 politist </p>
+            </div>
+            <div class="col-md-9 col-xs-12 text-left">
+                <ul class="footer-menu">
+                    <li class="wow fadeInLeft"><a href="#">Terms of Service</a></li>
+                    <li class="wow fadeInLeft"><a href="#">Privacy Policy</a></li>
+                    <li class="wow fadeInLeft"><a href="#">Contact</a></li>
+                    <li class="wow fadeInLeft"><a href="#">Speeches</a></li>
+                    <li class="wow fadeInLeft"><a href="#">Biography</a></li>
+                    <li class="wow fadeInLeft"><a href="#">Donation</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area end 公共的底部-->
+
+
+</body>
+</html>

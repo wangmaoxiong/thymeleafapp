@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Http Put 方式请求</title>
-    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+    <!-- Include All Stylesheet -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="css/preset.css" th:href="@{/css/preset.css}">
+    <link rel="stylesheet" href="css/animate.css" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="css/owl.carousel.css" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" href="css/owl.theme.css" th:href="@{/css/owl.theme.css}">
+    <link rel="stylesheet" href="css/magnific-popup.css" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="css/responsive.css" th:href="@{/css/responsive.css}">
+    <link id="color-preset" rel="stylesheet" type="text/css" href="css/presets/preset1.css"
+          th:href="@{/css/presets/preset1.css}">
+
     <style type="text/css">
         input, select {
             border-radius: 2px;
@@ -13,8 +25,11 @@
     </style>
 </head>
 <body>
+<!-- Header Area Start 公共的头部-->
+<!--th:replace 表达式：用目标模板内容来替换自己.-->
+<div th:replace="commonsTemplate::commonsHead"></div>
 
-<div style="width: 500px;height:400px;border: #1b6d85 1px solid;margin: auto;padding: 20px">
+<div style="width: 500px;height:580px;border: #1b6d85 1px solid;border-radius:3px;margin: auto;padding: 20px">
     <form action="" method="post" th:action="@{/example/httpPut}">
         <!--form的method只有get与post两种，使用put方式时：-->
         <!--创建一个input隐藏项，name强制为 "_method"，value值就指定此form请求的方式-->
@@ -40,6 +55,9 @@
         <br><br>
     </form>
 </div>
+<!-- Footer Area Start 公共的底部-->
+<!--th:replace 表达式：用目标模板内容来替换自己.-->
+<div th:replace="commonsTemplate::commonsFooter"></div>
 
 </body>
 </html>
