@@ -6,9 +6,7 @@ import com.wmx.thymeleafapp.mapper.DeptMapper;
 import com.wmx.thymeleafapp.pojo.Dept;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -77,4 +75,31 @@ public class DeptController {
         }
         return objectNode;
     }
+
+    /**
+     * 添加：  http://localhost:8080/dept/add
+     * {"dname":"Java开发部","loc":"长沙"}
+     *
+     * @param dept
+     * @return
+     */
+    @PostMapping("/dept/add")
+    public String addDept(@RequestBody Dept dept) {
+        Integer addDept = deptMapper.addDept(dept);
+        return String.valueOf(addDept);
+    }
+
+    /**
+     * 修改：  http://localhost:8080/dept/update
+     * {"deptno":1,"dname":"IOS开发部","loc":"长沙市"}
+     *
+     * @param dept
+     * @return
+     */
+    @PostMapping("/dept/update")
+    public String updateDept(@RequestBody Dept dept) {
+        Integer integer = deptMapper.updateDept(dept);
+        return String.valueOf(integer);
+    }
+
 }
