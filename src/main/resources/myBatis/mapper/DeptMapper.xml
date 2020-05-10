@@ -17,7 +17,7 @@
     </select>
 
     <!-- 根据主键删除-->
-    <delete id="deletePartyById">
+    <delete id="deleteDeptById">
       DELETE FROM dept where deptno = #{deptno}
     </delete>
 
