@@ -13,13 +13,22 @@
 
     <!-- 查询所有，虽然返回值是一个 List<Dept>，但是 resultType 只需要指定列表元素的类型即可.-->
     <select id="findAllDepts" resultType="com.wmx.thymeleafapp.pojo.Dept">
-        select * from party;
+        select * from dept;
     </select>
 
     <!-- 根据主键删除-->
     <delete id="deletePartyById">
-      DELETE FROM party where partyId = #{partyId}
+      DELETE FROM dept where deptno = #{deptno}
     </delete>
 
-    <!-- 其余 添加、修改完全与以前 spring 整合 myBatis 一样，在此不再累述-->
+    <!-- 新增-->
+    <insert id="addDept">
+        insert into dept(dname,loc) values(#{dname},#{loc})
+    </insert>
+
+    <!--修改-->
+    <update id="updateDept">
+        update dept set dname=#{pName},loc=#{loc} where deptno=#{deptno}
+    </update>
+
 </mapper>
