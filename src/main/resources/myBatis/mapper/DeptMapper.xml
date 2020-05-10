@@ -16,6 +16,11 @@
         select * from dept;
     </select>
 
+    <!--返回值类型指定为 List 中的元素类型-->
+    <select id="findDeptEmp" resultType="java.util.Map">
+        SELECT t1.*,t2.* from dept t1,emp t2 WHERE t1.deptno = #{deptno} and t1.deptno = t2.deptno;
+    </select>
+
     <!-- 根据主键删除-->
     <delete id="deleteDeptById">
       DELETE FROM dept where deptno = #{deptno}
