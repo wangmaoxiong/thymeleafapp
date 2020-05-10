@@ -4,6 +4,7 @@ package com.wmx.thymeleafapp.mapper;
 import com.wmx.thymeleafapp.pojo.Dept;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wangmaoxiong
@@ -24,6 +25,13 @@ public interface DeptMapper {
      * 查询所有
      */
     List<Dept> findAllDepts();
+
+    /**
+     * 查询指定部门的信息，以及部门下的所有人员信息.
+     * @param deptno
+     * @return
+     */
+    List<Map<String, Object>> findDeptEmp(Integer deptno);
 
     /**
      * 根据 id 删除
