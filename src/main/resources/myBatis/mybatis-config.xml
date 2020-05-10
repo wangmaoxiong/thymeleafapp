@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- MyBatis 核心配置文件，就是以前的 sqlMapConfig.xml 文件 -->
+    <!--可从官网获取本文件头：http://www.mybatis.org/mybatis-3/getting-started.html-->
+    <settings>
+        <!-- 开启驼峰命名，与注解方式的使用的 ConfigurationCustomizer 完全等效-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 更多配置选项都可以从官网获取：http://www.mybatis.org/mybatis-3/configuration.html#settings-->
+    </settings>
+</configuration>
