@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 指向对应的 Mapper 接口 -->
+<mapper namespace="com.wmx.thymeleafapp.mapper.DeptMapper">
+    <!-- select 表示查询标签，id 属性值是 DeptMapper 接口中的方法名称，resultType 指定返回值的类型-->
+    <!--可以不指定 parameterType 属性，此时会自动根据接口方法的参数类型进行映射-->
+    <select id="findDeptById" resultType="com.wmx.thymeleafapp.pojo.Dept">
+        select * from dept where deptno = #{deptno}
+    </select>
+
+    <!-- 查询所有，虽然返回值是一个 List<Dept>，但是 resultType 只需要指定列表元素的类型即可.-->
+    <select id="findAllDepts" resultType="com.wmx.thymeleafapp.pojo.Dept">
+        select * from party;
+    </select>
+
+    <!-- 根据主键删除-->
+    <delete id="deletePartyById">
+      DELETE FROM party where partyId = #{partyId}
+    </delete>
+
+    <!-- 其余 添加、修改完全与以前 spring 整合 myBatis 一样，在此不再累述-->
+</mapper>
