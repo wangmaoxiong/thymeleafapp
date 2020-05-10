@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wangmaoxiong
@@ -44,6 +45,19 @@ public class DeptController {
     @GetMapping("/depts")
     public List<Dept> findAllDepts() {
         return deptMapper.findAllDepts();
+    }
+
+    /**
+     * http://localhost:8080/dept/emp
+     * 查询指定部门的信息，以及部门下的所有人员信息.
+     *
+     * @param deptno
+     * @return
+     */
+    @GetMapping("dept/emp")
+    public List<Map<String, Object>> findDeptEmp(@RequestParam Integer deptno) {
+        List<Map<String, Object>> deptEmp = deptMapper.findDeptEmp(deptno);
+        return deptEmp;
     }
 
     /**
