@@ -2,7 +2,6 @@ package com.wmx.thymeleafapp.mapper;
 
 
 import com.wmx.thymeleafapp.pojo.Dept;
-import com.wmx.thymeleafapp.pojo.Person;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface DeptMapper {
     /**
      * 根据 id 查询
      */
-    Dept findDeptById(Integer partyId);
+    Dept findDeptById(Integer deptno);
 
     /**
      * 查询所有
@@ -29,7 +28,7 @@ public interface DeptMapper {
     /**
      * 根据 id 删除
      */
-    Integer deleteDeptById(Integer partyId);
+    Integer deleteDeptById(Integer deptno);
 
     /**
      * 添加
@@ -42,8 +41,8 @@ public interface DeptMapper {
     /**
      * 修改
      *
-     * @param Person
+     * @param dept
      * @return
      */
-    Integer updateDept(Person Person);
+    Integer updateDept(Dept dept);
 }
