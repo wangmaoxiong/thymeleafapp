@@ -31,7 +31,8 @@ public class MvcConfigurer implements WebMvcConfigurer {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/index")
-                .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**");
+                .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**")
+                .excludePathPatterns("/css/**/*.png","/css/**/*.gif","/css/**/*.jpg");
     }
 
     /**

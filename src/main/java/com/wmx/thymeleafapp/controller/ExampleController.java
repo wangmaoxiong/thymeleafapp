@@ -57,4 +57,15 @@ public class ExampleController {
         }
         return valueAsString;
     }
+
+
+    /**http://localhost:8080/example/zTree
+     * 跳转到 zTree.html 页面
+     *
+     * @return
+     */
+    @GetMapping("example/zTree")
+    public String toZTree() {
+        return "examples/zTree";
+    }
 }
