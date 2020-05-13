@@ -75,7 +75,7 @@ public class ExampleController {
 
     /**
      * http://localhost:8080/example/standardData
-     * 跳转到 standardData.html 页面
+     * 跳转到 standardData.html zTree 标准数据展示页面
      *
      * @return
      */
@@ -86,6 +86,7 @@ public class ExampleController {
 
     /**
      * http://localhost:8080/example/getStandardData
+     * 用于 standardData.html zTree 标准数据展示页面获取 json 数据.
      * @return
      */
     @GetMapping("example/getStandardData")
