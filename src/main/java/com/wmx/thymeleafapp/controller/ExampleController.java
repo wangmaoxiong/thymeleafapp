@@ -2,13 +2,16 @@ package com.wmx.thymeleafapp.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
 import com.wmx.thymeleafapp.pojo.User;
+import com.wmx.thymeleafapp.utils.FileWmxUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -59,7 +62,8 @@ public class ExampleController {
     }
 
 
-    /**http://localhost:8080/example/zTree
+    /**
+     * http://localhost:8080/example/zTree
      * 跳转到 zTree.html 页面
      *
      * @return
@@ -68,4 +72,28 @@ public class ExampleController {
     public String toZTree() {
         return "examples/zTree";
     }
+
+    /**
+     * http://localhost:8080/example/standardData
+     * 跳转到 standardData.html 页面
+     *
+     * @return
+     */
+    @GetMapping("example/standardData")
+    public String toStandardData() {
+        return "examples/standardData";
+    }
+
+    /**
+     * http://localhost:8080/example/getStandardData
+     * @return
+     */
+    @GetMapping("example/getStandardData")
+    @ResponseBody
+    public String getStandardData() {
+        File rootFile = new File("C:\\wmx\\document\\验收文档 20200429");
+        JsonArray jsonArray = FileWmxUtils.fileTreeByDirPath(rootFile, 3);
+        return jsonArray.toString();
+    }
+
 }
