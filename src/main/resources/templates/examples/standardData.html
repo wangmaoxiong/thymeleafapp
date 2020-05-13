@@ -8,7 +8,30 @@
     <script type="text/javascript" th:src="@{/js/zTree/jquery-1.4.4.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/zTree/jquery.ztree.core.min.js}"></script>
     <script type="text/javascript">
-        var setting = {};
+        var setting = {
+            view: {
+                //为了避免与双击功能冲突，建议关闭双击展开节点的功能
+                dblClickExpand: false
+            },
+            callback: {
+                //单击回调方法.
+                onClick: onClick
+            }
+        };
+
+        /**
+         * zTree 单击回调方法
+         * zTree 默认不提供单击节点名称展开节点的功能，但可以利用 onClick 事件回调函数轻松实现此功能
+         * @param e
+         * @param treeId
+         * @param treeNode
+         */
+        function onClick(e, treeId, treeNode) {
+            /**treeDemo 是 zTree 容器的 id 值，不要带 # 号*/
+            var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+            zTree.expandNode(treeNode);
+        }
+
         $(document).ready(function () {
             $.ajax({
                 "url": "http://localhost:8080/example/getStandardData",
