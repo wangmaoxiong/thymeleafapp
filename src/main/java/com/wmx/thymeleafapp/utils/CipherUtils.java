@@ -25,7 +25,7 @@ public class CipherUtils {
      * @param secret_key :用于生成密钥的 key，自定义即可，加密与解密必须使用同一个，如果不一致，则抛出异常
      * @param vector_key 用于生成算法参数规范的 key，自定义即可，加密与解密必须使用同一个，如果不一致，解密的内容可能会造成与源内容不一致.
      *                   <p>
-     *                   1、secret_key、vector_key 必须是 16 为字符串，如 wYDJty8o8HE6YjJS。
+     *                   1、secret_key、vector_key: AES 时必须是 16 个字节，DES 时必须是 8 字节.
      *                   2、secret_key、vector_key 值不建议使用中文，因为一个汉字会被当成两个字节。
      *                   </p>
      * @return 返回 Cipher 加密后的数据，对加密后的字节数组用 Base64 进行编码转成了可视字符串，如 7giH2bqIMH3kDMIg8gq0nY
@@ -37,10 +37,11 @@ public class CipherUtils {
         //使用 SecretKeySpec(byte[] key, String algorithm) 创建密钥. 算法要与 Cipher.getInstance 保持一致.
         SecretKey secretKey = new SecretKeySpec(secret_key.getBytes(), "AES");
         /**
-         * init(int opMode,Key key,AlgorithmParameterSpec params)：初始化 Cipher，Cipher.ENCRYPT_MODE 表示加密模式
-         * 使用 CBC 有向量模式时，cipher.init 必须传入 {@link AlgorithmParameterSpec}-算法参数规范.
-         * 所有参数规范都必须实现 {@link AlgorithmParameterSpec} 接口.
-         * 如果使用的是 ECB-无向量模式，那么 cipher.init 则加解密都不需要传  {@link AlgorithmParameterSpec} 参数.
+         * init(int opMode,Key key,AlgorithmParameterSpec params)：初始化 Cipher，
+         * 1、Cipher.ENCRYPT_MODE 表示加密模式
+         * 2、key 表示加密密钥
+         * 3、params 表示算法参数规范，使用 CBC 有向量模式时，必须传入,如果是 ECB-无向量模式,那么可以不传
+         * 4、所有参数规范都必须实现 {@link AlgorithmParameterSpec} 接口.
          */
         IvParameterSpec parameterSpec = new IvParameterSpec(vector_key.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, secretKey, parameterSpec);
@@ -61,7 +62,7 @@ public class CipherUtils {
      * @param secret_key   :用于生成密钥的 key，自定义即可，加密与解密必须使用同一个，如果不一致，则抛出异常
      * @param vector_key   用于生成算法参数规范的 key，自定义即可，加密与解密必须使用同一个，如果不一致，解密的内容可能会造成与源内容不一致.
      *                     <p>
-     *                     1、secret_key、vector_key 必须是 16 为字符串，如 wYDJty8o8HE6YjJS。
+     *                     1、secret_key、vector_key：AES 时必须是 16 个字节，DES 时必须是 8 字节.
      *                     2、secret_key、vector_key 值不建议使用中文，因为一个汉字会被当成两个字节。
      *                     </p>
      * @return
@@ -87,6 +88,7 @@ public class CipherUtils {
         String content = "红网时刻5月17日讯（记者 汪衡 通讯员 颜雨彬 汪丹）“场面壮观，气势磅礴，简直就是一部抗洪抢险水域救援大片！”抗洪抢险水域救援实战训练刚一结束，现场围观的群众纷纷发出了感叹。5月16日，湖南省消防救援总队在长沙市望城区千龙湖举办舟艇操作员培训，长沙、株洲、湘潭等40余名消防指战员参加，开展了一场抗洪抢险水域救援实战训练。" +
                 "夏以来，随着湖南防汛救援任务的日趋繁重。为提高全省消防救援队伍水域救援能力，充分发挥应急救援“主力军”和“国家队”的作用，湖南省消防救援总队组织了这次为期35天的培训。依托长沙、岳阳、常德3支省级水域救援队设立了3个培训点，全省653名学员分17期参加培训。此次培训采用课堂授课、实地讲解、实操训练等多种形式，培训内容贴近实战，主要包括OSO驾驶、快速出入库、翻船自救、故障排除、200米游泳、受限控艇等项目。省消防救援总队相关负责人介绍，为了加快适应“全灾种、大应急”的职能定位，全面做好“防大汛、抢大险、救大灾”的准备工作，湖南消防救援队伍未雨绸缪，组建了1支省级抗洪抢险救援队、13支市级抗洪抢险救援队，有水域救援任务的消防救援站均成立了1支站级抗洪抢险救援队，总人数2300余人。此外，省消防救援总队还把重型工程机械救援大队、航空救援大队作为抢险救援机动力量纳入调度体系，充分发挥消防救援队伍装备技术优势，最大限度地挽救生命，减少灾害损失。";
         //生成密钥的 key 与 生成算法参数规范的 key 加解密必须一致，它就像是一把钥匙或者口令，不能忘记.
+        //AES 加密算法时必须是 16 个字节，DES 时必须是 8 字节.
         String slatKey = "wYDJty8o8HE6YjJS";
         String vectorKey = "SC35fdGrQozSMT5a";
         String encrypt = encrypt(content, slatKey, vectorKey);
