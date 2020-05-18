@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @version 1.0
  * @date 2020/5/16 18:48
  */
-public class MessageDigestUtils {
+public class Md5EncodeUtils {
 
     /**
      * 将任意字符通过 MD5 摘要 与 Base64 进行定长加密
