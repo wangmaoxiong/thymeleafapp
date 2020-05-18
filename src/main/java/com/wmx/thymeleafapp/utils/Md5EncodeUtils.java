@@ -38,6 +38,8 @@ public class Md5EncodeUtils {
         return result;
     }
 
+
+
     public static void main(String[] args) {
         String sourceMessage = "123456万里长城_&*$#.Nice";
         //原字符：123456万里长城_&*$#.Nice
