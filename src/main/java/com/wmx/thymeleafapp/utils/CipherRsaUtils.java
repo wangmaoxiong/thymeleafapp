@@ -162,6 +162,7 @@ public class CipherRsaUtils {
         System.out.println("被加密数据字节大小：" + content.getBytes().length + " 字节，" + content.length() + " 个字符");
         System.out.println("源内容：\n" + content);
         try {
+            //公钥、私钥必须分开使用，公钥解密时，必须是私钥解密，反之亦然.
             String encrypted = CipherRsaUtils.cipherByPublicKey(content, 1, secureRandomSeed);
             String decrypted = CipherRsaUtils.cipherByPrivateKey(encrypted, 2, secureRandomSeed);
             System.out.println("加密后：\n" + encrypted);
