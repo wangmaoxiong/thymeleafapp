@@ -20,9 +20,10 @@ public class MvcConfigurer implements WebMvcConfigurer {
      * .addPathPatterns("/**")：表示拦截整个应用中的所有请求
      * .excludePathPatterns(String... patterns)：表示排除这些规则的请求，不对它们进行拦截
      * <p>
-     * spring Boot 2 以后，静态资源也会被拦截.
+     * 1、spring Boot 2 以后，静态资源也会被拦截.
      * classpath:/META‐INF/resources/","classpath:/resources/","classpath:/static/","classpath:/public/"下的资源也会被拦截
      * 通常静态资源可以不需要进行拦截，可以对它们直接进行放行
+     * 2、swagger 作为前端人员展示的文档，也可以不用拦截，/swagger/xx,/csrf
      *
      * @param registry
      */
@@ -30,10 +31,10 @@ public class MvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/user/index","/error")
+                .excludePathPatterns("/user/index", "/error")
                 .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**")
                 .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg")
-                .excludePathPatterns("/swagger*/**","/csrf");
+                .excludePathPatterns("/swagger*/**", "/csrf");
     }
 
     /**
