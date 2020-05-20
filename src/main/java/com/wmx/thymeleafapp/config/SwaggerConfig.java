@@ -55,6 +55,7 @@ public class SwaggerConfig {
      * 4、version：更新版本
      * 5、contact：联系人信息，有: 名称、网站 url 地址、联系 email 地址。显示在服务条款下面。
      * 6、license：更新此 API 的许可证信息，显示在联系人下面
+     * 7、这些值可以为空
      *
      * @return
      */
@@ -65,7 +66,7 @@ public class SwaggerConfig {
                 .termsOfServiceUrl("https://wangmaoxiong.blog.csdn.net/")
                 .version("1.0")
                 .contact(new Contact("汪茂雄", "https://blog.csdn.net/wangmx1993328", "2268461750@qq.com"))
-                .license("湘ICP证030889号")
+                .license("马自达 & 汪茂雄 为您提供技术支持!")
                 .build();
     }
 }

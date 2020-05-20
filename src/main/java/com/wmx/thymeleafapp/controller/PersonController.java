@@ -2,6 +2,8 @@ package com.wmx.thymeleafapp.controller;
 
 import com.wmx.thymeleafapp.mapper.PersonMapper;
 import com.wmx.thymeleafapp.pojo.Person;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -24,6 +26,8 @@ public class PersonController {
      * @param pId
      * @return
      */
+    @ApiOperation(value = "根据用户 id 查询", notes = "直接将结果返回给用户页面")
+    @ApiImplicitParam(name = "pId", value = "用户 id", dataType = "Integer", required = true, paramType = "query")
     @GetMapping("/person/{pId}")
     public Person findPersonById(@PathVariable("pId") Integer pId) {
         Person person = personMapper.findPersonById(pId);
@@ -36,6 +40,7 @@ public class PersonController {
      *
      * @return
      */
+    @ApiOperation(value = "查询所有用户")
     @GetMapping("/person")
     public List<Person> findAllPersons() {
         List<Person> personList = personMapper.findAllPersons();
@@ -49,6 +54,8 @@ public class PersonController {
      * @param person
      * @return
      */
+    @ApiOperation(value = "添加用户", notes = "根据用户POJO对象进行添加")
+    @ApiImplicitParam(name = "person", value = "用户POJO对象", dataType = "Person", required = true, paramType = "Body")
     @PostMapping("/person/add")
     public String addPerson(@RequestBody Person person) {
         Integer integer = personMapper.addPerson(person);
@@ -63,6 +70,8 @@ public class PersonController {
      * @param person
      * @return
      */
+    @ApiOperation(value = "修改用户", notes = "根据用户POJO对象进行修改")
+    @ApiImplicitParam(name = "person", value = "用户POJO对象", dataType = "Person", required = true, paramType = "Body")
     @PostMapping("/person/update")
     public String updatePerson(@RequestBody Person person) {
         Integer integer = personMapper.updatePerson(person);
@@ -75,6 +84,8 @@ public class PersonController {
      * @param pId
      * @return
      */
+    @ApiOperation(value = "删除用户", notes = "根据用户 id 进行删除")
+    @ApiImplicitParam(name = "pId", value = "用户 id", dataType = "Integer", required = true, paramType = "Query")
     @GetMapping("/person/del/{pId}")
     public String deletePerson(@PathVariable("pId") Integer pId) {
         Integer integer = personMapper.deletePersonById(pId);
