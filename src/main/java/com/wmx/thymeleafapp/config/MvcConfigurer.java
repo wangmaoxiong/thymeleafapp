@@ -30,9 +30,10 @@ public class MvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/user/index")
+                .excludePathPatterns("/user/index","/error")
                 .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**")
-                .excludePathPatterns("/css/**/*.png","/css/**/*.gif","/css/**/*.jpg");
+                .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg")
+                .excludePathPatterns("/swagger*/**","/csrf");
     }
 
     /**
