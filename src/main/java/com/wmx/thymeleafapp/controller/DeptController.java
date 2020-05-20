@@ -7,6 +7,7 @@ import com.wmx.thymeleafapp.pojo.Dept;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -19,6 +20,7 @@ import java.util.Map;
  * @date 2020/5/10 11:24
  */
 @RestController
+@ApiIgnore
 public class DeptController {
     private static Logger logger = LoggerFactory.getLogger(DeptController.class);
     @Resource

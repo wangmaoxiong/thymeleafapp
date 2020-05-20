@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.File;
 import java.util.Date;
@@ -20,6 +21,7 @@ import java.util.Date;
  * @date 2020/5/7 9:12
  */
 @Controller
+@ApiIgnore
 public class ExampleController {
 
     /**

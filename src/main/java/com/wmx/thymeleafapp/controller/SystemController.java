@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -70,6 +71,7 @@ public class SystemController {
         return objectNode.toString();
     }
 
+    @ApiIgnore
     @ResponseBody
     @GetMapping("system/test")
     public String test() {
@@ -77,3 +79,4 @@ public class SystemController {
         return "xx";
     }
 }
+
