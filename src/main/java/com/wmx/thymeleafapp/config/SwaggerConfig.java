@@ -1,5 +1,6 @@
 package com.wmx.thymeleafapp.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -16,6 +17,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * <p>
  * 1、@EnableSwagger2：表示应用开启 Swagger2 支持。
  * 2、@EnableSwagger2 注解需要和 @Configuration 注解一起使用
+ * 3、@ConditionalOnProperty 使用自定义配置 sys.config.swagger-is-open，如果值为 true，则此配置类生效，
+ * 否则如果不为 true，或者直接没有配置，则此配置类不会生效。通常上线后，swagger 在线文档可以关掉.
  *
  * @author wangmaoxiong
  * @version 1.0
@@ -23,6 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
+@ConditionalOnProperty(prefix = "sys.config", name = "swagger-is-open", havingValue = "true")
 public class SwaggerConfig {
 
     /**
