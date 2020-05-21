@@ -88,6 +88,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * 登录成功时会放行
          */
         http.formLogin();
+        /**
+         * 开启自动配置注销功能，默认以 "/logout" 路劲表示用户注销。
+         * 即页面请求 "/logout" 时，就会自动注销登录，同时自动清除 session
+         * 注销成功后，默认跳转到 "/login?logout" 登录页面。
+         */
+        http.logout();
     }
 }
 
