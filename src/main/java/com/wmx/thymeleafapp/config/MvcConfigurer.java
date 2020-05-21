@@ -33,7 +33,7 @@ public class MvcConfigurer implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/index", "/error")
                 .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**")
-                .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg")
+                .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg","/favicon.ico")
                 .excludePathPatterns("/swagger*/**", "/csrf");
     }
 

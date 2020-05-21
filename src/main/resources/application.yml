@@ -10,6 +10,10 @@ spring:
     url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  security:
+    user:
+      name: admin  # spring security 安全认证的默认账号与密码
+      password: 123456
 
 #指定 myBatis 核心配置文件与 Mapper 映射 xml 文件
 mybatis:
@@ -20,3 +24,5 @@ mybatis:
 sys:
   config:
     swagger-is-open: true
+
+
