@@ -25,14 +25,14 @@ public class PersonController {
 
     /**
      * 根据用户 id 查询----直接将结果返回给用户页面
-     * http://localhost:8080/person/1
+     * http://localhost:8080/person/findById/1
      *
      * @param pId
      * @return
      */
     @ApiOperation(value = "根据用户 id 查询", notes = "直接将结果返回给用户页面")
     @ApiImplicitParam(name = "pId", value = "用户 id", dataType = "Integer", required = true, paramType = "path")
-    @GetMapping("/person/{pId}")
+    @GetMapping("/person/findById/{pId}")
     public Person findPersonById(@PathVariable("pId") Integer pId) {
         Person person = personMapper.findPersonById(pId);
         return person;
@@ -40,12 +40,12 @@ public class PersonController {
 
     /**
      * 查询所有用户----直接将结果返回给用户页面
-     * http://localhost:8080/person
+     * http://localhost:8080/person/lists
      *
      * @return
      */
     @ApiOperation(value = "查询所有用户")
-    @GetMapping("/person")
+    @GetMapping("/person/lists")
     public List<Person> findAllPersons() {
         List<Person> personList = personMapper.findAllPersons();
         return personList;

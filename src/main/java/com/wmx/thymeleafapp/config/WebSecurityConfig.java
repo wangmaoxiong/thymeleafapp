@@ -65,10 +65,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          */
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests()
-                .antMatchers("/user/addUser").hasRole("topLevel")
-                .antMatchers("/user/deleteUser/**").hasAnyRole("topLevel", "senior")
-                .antMatchers("/user/updateUser").hasAnyRole("topLevel", "senior", "middleRank")
-                .antMatchers("/user/findAllUsers").access("permitAll");
+                .antMatchers("/person/del/**").hasRole("administrators")
+                .antMatchers("/person/update").hasAnyRole("administrators", "auditor")
+                .antMatchers("/person/add").hasAnyRole("administrators", "operator")
+                .antMatchers("/person/findById/**", "/person/lists").access("permitAll");
 
         /**
          * http.authorizeRequests().anyRequest().hasRole("senior")：
@@ -82,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         /**
          * formLogin：指定支持基于表单的身份验证
-         * 未使用 FormLoginConfigurer#loginPage(String) 指定登录页时，将自动生成一个登录页面，亲测此页面引用的是联网的 bootstarp 的样式，所以断网时，样式会有点怪
+         * 未使用 FormLoginConfigurer#loginPage(String) 指定登录页时，将自动生成一个登录页面，亲测此页面引用的是联网的 bootStrap 的样式，所以断网时，样式会有点怪
          * 当用户没有登录、没有权限时就会自动跳转到登录页面(默认 /login)
          * 当登录失败时，默认跳转到 /login?error
          * 登录成功时会放行
