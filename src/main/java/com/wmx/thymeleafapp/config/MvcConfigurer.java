@@ -32,7 +32,6 @@ public class MvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        System.out.println("InterceptorRegistry ..........");
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/index", "/error")
