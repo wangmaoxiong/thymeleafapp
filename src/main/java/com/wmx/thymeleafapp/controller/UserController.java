@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     /**
      * 跳转到首页.
+     *
      * @return
      */
     @GetMapping("user/index")
@@ -27,5 +28,16 @@ public class UserController {
         httpSession.setMaxInactiveInterval(60 * 60);
         //返回到 thymeleaf 模板目录下的 index.html 页面
         return "index";
+    }
+
+    /**
+     * 跳转到登陆页.
+     *
+     * @return
+     */
+    @GetMapping("user/toLogin")
+    public String toLogin() {
+        //返回到 thymeleaf 模板目录下的 index.html 页面
+        return "login";
     }
 }

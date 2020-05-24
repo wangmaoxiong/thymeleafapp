@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>银河系大数据平台</title>
+    <link href="./login.css" type="text/css" rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<div class="login">
+    <div class="message">银河系大数据平台</div>
+    <div id="darkBannerWrap"></div>
+
+    <form method="post" th:action="@{/user/login}">
+        <input name="action" value="login" type="hidden">
+        <input name="username" placeholder="用户名" required="required" type="text">
+        <hr class="hr15">
+        <input name="password" placeholder="密码" required="required" type="password">
+        <hr class="hr15">
+        <label for='remonberMe' style="font-size:14px">记住我？</label><input name="remonberMe" type="checkbox"
+                                                                          id="remonberMe">
+        <hr class="hr15">
+        <input value="登录" style="width:100%;" type="submit">
+        <hr class="hr20">
+        <!--th:text="${messages}"-->
+        <div style="width:100%;color: red;text-align: center;"></div>
+    </form>
+</div>
+
+</body>
+</html>
