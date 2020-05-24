@@ -1,6 +1,7 @@
 package com.wmx.thymeleafapp.config;
 
 import com.wmx.thymeleafapp.interceptor.LoginHandlerInterceptor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -11,8 +12,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @version 1.0
  * @date 2020/4/30 17:25
  * 实现 WebMvcConfigurer 接口，然后重启需要的方法，比如注册拦截器，则重写 addInterceptors(InterceptorRegistry registry)
+ * 通过全局文件配置 sys.config.handler-interceptor-is-open 属性来控制此配置类是否生效.
  */
 @Configuration
+@ConditionalOnProperty(prefix = "sys.config", name = "handler-interceptor-is-open", havingValue = "true")
 public class MvcConfigurer implements WebMvcConfigurer {
 
     /**
@@ -29,11 +32,12 @@ public class MvcConfigurer implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        System.out.println("InterceptorRegistry ..........");
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/index", "/error")
                 .excludePathPatterns("/webjars/**", "/css/**/*.css", "/js/**/*.js", "/fonts/**", "/images/**")
-                .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg","/favicon.ico")
+                .excludePathPatterns("/css/**/*.png", "/css/**/*.gif", "/css/**/*.jpg", "/favicon.ico")
                 .excludePathPatterns("/swagger*/**", "/csrf");
     }
 

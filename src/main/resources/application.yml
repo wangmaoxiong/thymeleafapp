@@ -20,9 +20,13 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
 
-#自定义属性，是否开启 Swagger 在线文档功能，通常上线之后，可以关掉.
+#自定义属性
+#swagger-is-open：是否开启 Swagger 在线文档功能，通常上线之后，可以关掉.
+#handler-interceptor-is-open：是否使 com.wmx.thymeleafapp.config.MvcConfigurer 配置类失效
 sys:
   config:
     swagger-is-open: true
+    handler-interceptor-is-open: false
+
 
 
