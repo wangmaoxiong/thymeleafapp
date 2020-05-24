@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * .access("permitAll") 等价于 permitAll()
          * "/**" 表示匹配任意
          */
-        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/user/login").permitAll();
         http.authorizeRequests()
                 .antMatchers("/person/del/**").hasRole("administrators")
                 .antMatchers("/person/update").hasAnyRole("administrators", "auditor")
@@ -71,27 +71,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/person/findById/**", "/person/lists").access("permitAll");
 
         /**
-         * http.authorizeRequests().anyRequest().hasRole("senior")：
-         *      表示约定以外的所有请求，都需要有 senior 角色才可以访问
+         * http.authorizeRequests().anyRequest().hasRole("operator")：
+         *      表示约定以外的所有请求，都需要有 operator 角色才可以访问
          * http.authorizeRequests().anyRequest().authenticated()：
          *      表示约定以外的所有请求，必须要经过认证才能访问，但是认证的可以是任意角色，即只要认证就行，与角色的权限无关
          * http.authorizeRequests().anyRequest().permitAll():
          *      表示约定以外的所有请求，任何用户都可以访问.
          */
-        http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().authenticated();
 
         /**
-         * formLogin：指定支持基于表单的身份验证
+         * formLogin()：指定支持基于表单的身份验证
          * 未使用 FormLoginConfigurer#loginPage(String) 指定登录页时，将自动生成一个登录页面，亲测此页面引用的是联网的 bootStrap 的样式，所以断网时，样式会有点怪
-         * 当用户没有登录、没有权限时就会自动跳转到登录页面(默认 /login)
-         * 当登录失败时，默认跳转到 /login?error
-         * 登录成功时会放行
+         * 当用户没有登录、没有权限时就会自动跳转到登录页面(默认 /login),当登录失败时，默认跳转到 /login?error,登录成功时会放行
          */
         http.formLogin();
+        http.rememberMe();
         /**
-         * 开启自动配置注销功能，默认以 "/logout" 路劲表示用户注销。
-         * 即页面请求 "/logout" 时，就会自动注销登录，同时自动清除 session
-         * 注销成功后，默认跳转到 "/login?logout" 登录页面。
+         * 默认开启了注销功能，默认以 "/logout" 路劲表示用户注销请求，
+         * 注销成功后，默认跳转到 "/login?logout" 登录页面，自动清除 session，清除记住我功能的 Cookie，HttpSession 无效。
          */
         http.logout();
     }
