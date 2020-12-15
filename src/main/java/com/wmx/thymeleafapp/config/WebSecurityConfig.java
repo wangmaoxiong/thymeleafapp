@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         /**
          * .authorizeRequests：表示验证请求
          * .antMatchers(String... antPatterns)：使用 {@link AntPathRequestMatcher} 的匹配规则
-         * .antMatchers("/") : 表示应用的首页
+         * .antMatchers("/") : 表示应用的首页，/user/toLogin 用于进入自定义登陆页
          * .permitAll()：表示允许一切用户访问，底层调用 access("permitAll")
          * .hasRole(String role)：表示 antMatchers 中的 url 请求允许此角色访问
          * .hasAnyRole(String... roles) : 表示 antMatchers 中的 url 请求允许这多个角色访问
@@ -63,13 +63,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          * .access("permitAll") 等价于 permitAll()
          * "/**" 表示匹配任意
          */
-        http.authorizeRequests().antMatchers("/user/login").permitAll();
+        http.authorizeRequests().antMatchers("/user/toLogin").permitAll();
         http.authorizeRequests()
                 .antMatchers("/person/del/**").hasRole("administrators")
                 .antMatchers("/person/update").hasAnyRole("administrators", "auditor")
                 .antMatchers("/person/add").hasAnyRole("administrators", "operator")
                 .antMatchers("/person/findById/**", "/person/lists").access("permitAll");
 
+        /**
+         * spring security 导入后默认已经开启了验证，包括静态资源
+         * 因为登陆页面也需要引用静态资源，所以将登录页面的静态资源进行放行，运行一切用户访问.
+         */
+        http.authorizeRequests().antMatchers("/css/**", "/images/**", "/js/**").permitAll();
         /**
          * http.authorizeRequests().anyRequest().hasRole("operator")：
          *      表示约定以外的所有请求，都需要有 operator 角色才可以访问
@@ -81,17 +86,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated();
 
         /**
-         * formLogin()：指定支持基于表单的身份验证
-         * 未使用 FormLoginConfigurer#loginPage(String) 指定登录页时，将自动生成一个登录页面，亲测此页面引用的是联网的 bootStrap 的样式，所以断网时，样式会有点怪
-         * 当用户没有登录、没有权限时就会自动跳转到登录页面(默认 /login),当登录失败时，默认跳转到 /login?error,登录成功时会放行
+         * 1、formLogin()：指定支持基于表单的身份验证
+         * 2、未使用 FormLoginConfigurer#loginPage(String) 指定登录页时，将自动生成一个登录页面，亲测此页面引用的是联网的 bootStrap 的样式，所以断网时，样式会有点怪
+         * 3、当用户没有登录、没有权限时默认会自动跳转到登录页面(默认 /login),当登录失败时，默认跳转到 /login?error,登录成功时会放行
          */
-        http.formLogin();
-        http.rememberMe();
+        http.formLogin().loginPage("/user/toLogin");
+
         /**
          * 默认开启了注销功能，默认以 "/logout" 路劲表示用户注销请求，
          * 注销成功后，默认跳转到 "/login?logout" 登录页面，自动清除 session，清除记住我功能的 Cookie，HttpSession 无效。
          */
-        http.logout();
+        http.logout().logoutUrl("/logout").permitAll();
+
+        /**
+         * 开启记住我功能。
+         * 1、开启后登陆按钮上方自动会显示一个 "记住我" 复选框
+         * 2、登陆成功后, 浏览器会自动存储一个名称为 remember-me 的 cookie 数据，过期时间为 14 天
+         * 3、有效期内用户再次访问系统时就会带上这个 cookie，只要验证通过，就可以免登录，直接进入系统
+         * 4、当 logout 注销时，默认会自动删除此 cookie 数据
+         */
+        http.rememberMe();
     }
 }
 
