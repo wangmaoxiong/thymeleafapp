@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvasContent {
+            margin: auto;
+            width: 1000px !important;
+            height: 600px !important;
+            color: white;
+            text-align: center;
+            background-color: sienna;
+            padding: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="canvasContent">
+    <!--图片位置不能是跨域的，否则显示不出来-->
+    <img src="./images/qq_logo_2x.png">
+    <h3>蚩尤后裔，Html 2 Canvas</h3>
+    <table border="1" style="border-collapse: collapse;">
+        <tr>
+            <th>名称</th>
+            <th>官网</th>
+            <th>性质</th>
+        </tr>
+        <tr>
+            <td>C语言中文网</td>
+            <td>http://c.biancheng.net/</td>
+            <td>教育</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>http://www.baidu.com/</td>
+            <td>搜索</td>
+        </tr>
+        <tr>
+            <td>当当</td>
+            <td>http://www.dangdang.com/</td>
+            <td>图书</td>
+        </tr>
+    </table>
+</div>
+<hr/>
+
+</body>
+
+<script src="./html2canvas.js"></script>
+<script>
+    html2canvas(document.body, {
+        backgroundColor: "transparent",
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: "transparent"
+    }).then(function (canvas) {
+        document.body.appendChild(canvas);
+    });
+</script>
+
+</html>
