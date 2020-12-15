@@ -31,5 +31,6 @@ sys:
     swagger-is-open: true
     handler-interceptor-is-open: false
 
-
-
+#logging:
+#  level:
+#    root: debug
