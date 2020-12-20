@@ -73,11 +73,13 @@
      * html 转为 Canvas
      * 1、document.body：表示将整个 body 页面转化为 Canvas，可以任意的 Dom 对象
      * 2、如果网页中有跨域的图片，则必须设置 allowTaint: true - 允许交叉源图像污染画布
-     * 3、then函数中的 canvas 参数是转换成功后的 Canvas 对象，可以做任意的其它操作，比如展示、或者下周、转 PDF 等
+     * 3、logging: false：为调试目的启用日志记录，开发测试时可以开启，上线后应该设置为 false。
+     * 4、then函数中的 canvas 参数是转换成功后的 Canvas 对象，可以做任意的其它操作，比如展示、或者下周、转 PDF 等
      */
     function html2Canvas() {
         html2canvas(document.body, {
-            allowTaint: true
+            allowTaint: true,
+            logging: false
         }).then(function (canvas) {
             //将 Canvas 追加到页面中展示
             document.body.appendChild(canvas);
