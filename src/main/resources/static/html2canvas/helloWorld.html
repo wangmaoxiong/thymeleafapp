@@ -16,7 +16,8 @@
 </head>
 <body>
 <div id="canvasContent">
-    <img src="images/qq_logo_2x.png">
+    <!--特意准备两张网络上的图片-->
+    <img src="https://mat1.gtimg.com/pingjs/ext2020/qqindex2018/dist/img/qq_logo_2x.png">
     <img src="https://www.baidu.com/img/flexible/logo/pc/result.png">
     <table border="1" style="border-collapse: collapse;">
         <tr>
@@ -71,14 +72,14 @@
     /**
      * html 转为 Canvas
      * 1、document.body：表示将整个 body 页面转化为 Canvas，可以任意的 Dom 对象
-     * 2、如果网页中有跨域的图片，则必须设置如下：useCORS: true - 尝试使用CORS从服务器加载图像；allowTaint: true - 允许交叉源图像污染画布
-     * 3、then 中的 canvas 是转换成功后的 Canvas 对象，可以做任意的其它操作，比如展示、或者下周、转 PDF 等
+     * 2、如果网页中有跨域的图片，则必须设置 allowTaint: true - 允许交叉源图像污染画布
+     * 3、then函数中的 canvas 参数是转换成功后的 Canvas 对象，可以做任意的其它操作，比如展示、或者下周、转 PDF 等
      */
     function html2Canvas() {
         html2canvas(document.body, {
             backgroundColor: "transparent",
             allowTaint: true,
-            useCORS: true,
+            // useCORS: true,
         }).then(function (canvas) {
             //将 Canvas 追加到页面中展示
             document.body.appendChild(canvas);
