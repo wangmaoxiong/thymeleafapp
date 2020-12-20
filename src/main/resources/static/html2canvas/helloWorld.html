@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>html2canvas 插件 html 转 canvas</title>
     <style>
         #canvasContent {
             margin: auto;
-            width: 1000px !important;
+            width: 600px !important;
             height: 600px !important;
             color: white;
             text-align: center;
             background-color: sienna;
-            padding: auto;
         }
     </style>
 </head>
 <body>
 <div id="canvasContent">
-    <!--图片位置不能是跨域的，否则显示不出来-->
-    <img src="./images/qq_logo_2x.png">
-    <h3>蚩尤后裔，Html 2 Canvas</h3>
+    <img src="images/qq_logo_2x.png">
+    <img src="https://www.baidu.com/img/flexible/logo/pc/result.png">
     <table border="1" style="border-collapse: collapse;">
         <tr>
             <th>名称</th>
@@ -42,21 +40,50 @@
             <td>图书</td>
         </tr>
     </table>
+    <form action="/example/html5/demo_form.asp" method="get">
+        First name:<input type="text" name="fname"/><br/><br/>
+        Date: <input type="date" name="user_date"/><br/><br/>
+        E-mail: <input type="email" name="userid"/><br/><br/>
+        Poop：<select name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+    </select><br/><br/>
+        <button type="submit">提交</button>
+    </form>
+
+    <article>
+        <h1>Internet Explorer 9</h1>
+        <p>Windows Internet Explorer 9（简称 IE9）于 2011 年 3 月 14 日发布.....</p>
+    </article>
+
+    <!--点击按钮后，调用下面的方法-->
+    <button onclick="html2Canvas()" style="width: 200px;height: 60px;font-size: 18px">蚩尤后裔，Html 2 Canvas</button>
+
 </div>
 <hr/>
 
 </body>
 
-<script src="./html2canvas.js"></script>
-<script>
-    html2canvas(document.body, {
-        backgroundColor: "transparent",
-        allowTaint: true,
-        useCORS: true,
-        backgroundColor: "transparent"
-    }).then(function (canvas) {
-        document.body.appendChild(canvas);
-    });
+<script type="text/javascript" src="./html2canvas.js"></script>
+<script type="text/javascript">
+    /**
+     * html 转为 Canvas
+     * 1、document.body：表示将整个 body 页面转化为 Canvas，可以任意的 Dom 对象
+     * 2、如果网页中有跨域的图片，则必须设置如下：useCORS: true - 尝试使用CORS从服务器加载图像；allowTaint: true - 允许交叉源图像污染画布
+     * 3、then 中的 canvas 是转换成功后的 Canvas 对象，可以做任意的其它操作，比如展示、或者下周、转 PDF 等
+     */
+    function html2Canvas() {
+        html2canvas(document.body, {
+            backgroundColor: "transparent",
+            allowTaint: true,
+            useCORS: true,
+        }).then(function (canvas) {
+            //将 Canvas 追加到页面中展示
+            document.body.appendChild(canvas);
+        });
+    }
 </script>
 
 </html>
