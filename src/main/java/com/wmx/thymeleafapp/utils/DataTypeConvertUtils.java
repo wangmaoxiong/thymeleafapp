@@ -1,7 +1,10 @@
 package com.wmx.thymeleafapp.utils;
+
 import java.util.Arrays;
 
 /**
+ * 16 进制转换
+ *
  * @author wangmaoxiong
  * @version 1.0
  * @date 2020/5/17 15:41
@@ -118,14 +121,20 @@ public class DataTypeConvertUtils {
     public static void main(String[] args) {
         String ordinaryString = "455A432F5600";
         String hexString_result = string2HexString(ordinaryString);
+        //原字符串：455A432F5600
         System.out.println("原字符串：" + ordinaryString);
+        //转换后16进制字符串：343535413433324635363030
         System.out.println("转换后16进制字符串：" + hexString_result);
+        //16进制字符串反转普通字符串：455A432F5600
         System.out.println("16进制字符串反转普通字符串：" + hexString2String(hexString_result));
 
         String hexString = "45 53 43 2F 56 50 2E 6E 65 74 10 03 00 00 00 00 ";
         byte[] bytes = hexString2Bytes(hexString);
+        //原16进制字符串：45 53 43 2F 56 50 2E 6E 65 74 10 03 00 00 00 00
         System.out.println("\n原16进制字符串：" + hexString);
+        //转换好的10进制字节数组：[69, 83, 67, 47, 86, 80, 46, 110, 101, 116, 16, 3, 0, 0, 0, 0]
         System.out.println("转换好的10进制字节数组：" + Arrays.toString(bytes));
+        //10进制数组反转16进制字符串：45 53 43 2F 56 50 2E 6E 65 74 10 03 00 00 00 00
         System.out.println("10进制数组反转16进制字符串：" + bytes2HexString(bytes, true));
 
         String content = "万里长城今犹在，不见当年秦始皇";
@@ -133,6 +142,7 @@ public class DataTypeConvertUtils {
         //e4b887e9878ce995bfe59f8ee4bb8ae78ab9e59ca8efbc8ce4b88de8a781e5bd93e5b9b4e7a7a6e5a78be79a87
         System.out.println(bytes2HexString);
         byte[] hexString2Bytes = hexString2Bytes(bytes2HexString);
+        //万里长城今犹在，不见当年秦始皇
         System.out.println(new String(hexString2Bytes));
     }
 }
